@@ -17,7 +17,7 @@ const LOCAL_CHAIN_INFO: ChainInfo = {
   coinType: coinType60,
   rpc: 'http://localhost:26657',
   rest: 'http://localhost:1317',
-  chainId: 'polaris-2061',
+  chainId: 'clockend_4200',
   chainName: 'polaris',
   stakeCurrency: GAZER,
   bip44: gazerBip44,
