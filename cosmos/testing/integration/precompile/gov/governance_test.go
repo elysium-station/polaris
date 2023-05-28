@@ -68,7 +68,7 @@ var _ = SynchronizedBeforeSuite(func() []byte {
 	)
 	// Setup the bank precompile.
 	bankPrecompile, _ = bbindings.NewBankModule(
-		common.HexToAddress("0x4381dC2aB14285160c808659aEe005D51255adD7"), tf.EthClient)
+		common.HexToAddress("0x954bF70e471CAA92FbaEC025Dd2C30d62383e393"), tf.EthClient)
 
 	// Deploy the contract.
 	var tx *types.Transaction

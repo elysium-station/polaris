@@ -216,7 +216,7 @@ contract PolarisERC20 is IERC20 {
      * @return IBankModule the address of the bank module precompile.
      */
     function bank() internal pure returns (IBankModule) {
-        return IBankModule(address(0x4381dC2aB14285160c808659aEe005D51255adD7));
+        return IBankModule(address(0x954bF70e471CAA92FbaEC025Dd2C30d62383e393));
     }
 
     /**
