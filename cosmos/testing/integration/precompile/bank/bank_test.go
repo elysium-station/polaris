@@ -53,7 +53,7 @@ var _ = SynchronizedBeforeSuite(func() []byte {
 }, func(data []byte) {})
 
 var _ = Describe("Bank", func() {
-	denom := "abera"
+	denom := "afury"
 	denom2 := "atoken"
 	denom3 := "stake"
 
@@ -80,24 +80,24 @@ var _ = Describe("Bank", func() {
 			},
 		}
 		evmDenomMetadata := bindings.IBankModuleDenomMetadata{
-			Name:        "Berachain bera",
-			Symbol:      "BERA",
-			Description: "The Bera.",
+			Name:        "Gridiron fury",
+			Symbol:      "FURY",
+			Description: "The Fury.",
 			DenomUnits: []bindings.IBankModuleDenomUnit{
-				{Denom: "bera", Exponent: uint32(0), Aliases: []string{"bera"}},
-				{Denom: "nbera", Exponent: uint32(9), Aliases: []string{"nanobera"}},
-				{Denom: "abera", Exponent: uint32(18), Aliases: []string{"attobera"}},
+				{Denom: "fury", Exponent: uint32(0), Aliases: []string{"fury"}},
+				{Denom: "nfury", Exponent: uint32(9), Aliases: []string{"nanofury"}},
+				{Denom: "afury", Exponent: uint32(18), Aliases: []string{"attofury"}},
 			},
-			Base:    "abera",
-			Display: "bera",
+			Base:    "afury",
+			Display: "fury",
 		}
 
-		// charlie initially has 1000000000000000000 abera
+		// charlie initially has 1000000000000000000 afury
 		balance, err := bankPrecompile.GetBalance(nil, tf.Address("charlie"), denom)
 		Expect(err).ShouldNot(HaveOccurred())
 		Expect(balance.Cmp(big.NewInt(1000000000000000000))).To(Equal(0))
 
-		// Send 1000 bera from alice to charlie
+		// Send 1000 fury from alice to charlie
 		_, err = bankPrecompile.Send(
 			tf.GenerateTransactOpts("alice"),
 			tf.Address("alice"),
@@ -110,12 +110,12 @@ var _ = Describe("Bank", func() {
 		err = tf.Network.WaitForNextBlock()
 		Expect(err).ToNot(HaveOccurred())
 
-		// charlie now has 1000000000000001000 abera
+		// charlie now has 1000000000000001000 afury
 		balance, err = bankPrecompile.GetBalance(nil, tf.Address("charlie"), denom)
 		Expect(err).ShouldNot(HaveOccurred())
 		Expect(balance).To(Equal(big.NewInt(1000000000000001000)))
 
-		// bob has 100 abera and 100 atoken
+		// bob has 100 afury and 100 atoken
 		allBalance, err := bankPrecompile.GetAllBalances(nil, tf.Address("bob"))
 		Expect(err).ShouldNot(HaveOccurred())
 		Expect(allBalance).To(Equal(expectedAllBalance))
@@ -140,7 +140,7 @@ var _ = Describe("Bank", func() {
 		Expect(err).ShouldNot(HaveOccurred())
 		Expect(denomMetadata).To(Equal(evmDenomMetadata))
 
-		sendEnabled, err := bankPrecompile.GetSendEnabled(nil, "abera")
+		sendEnabled, err := bankPrecompile.GetSendEnabled(nil, "afury")
 		Expect(err).ShouldNot(HaveOccurred())
 		Expect(sendEnabled).To(BeTrue())
 	})
@@ -161,7 +161,7 @@ var _ = Describe("Bank", func() {
 			},
 		}
 
-		// donate 1000000 abera from account 0 to contractAddr
+		// donate 1000000 afury from account 0 to contractAddr
 		_, err = contract.Donate(tf.GenerateTransactOpts("alice"), coinsToDonate)
 		Expect(err).ToNot(HaveOccurred())
 
@@ -169,12 +169,12 @@ var _ = Describe("Bank", func() {
 		err = tf.Network.WaitForNextBlock()
 		Expect(err).ToNot(HaveOccurred())
 
-		// contractAddr should have 1000000 abera
+		// contractAddr should have 1000000 afury
 		balance, err := bankPrecompile.GetBalance(nil, contractAddr, denom)
 		Expect(err).ShouldNot(HaveOccurred())
 		Expect(balance).To(Equal(big.NewInt(1000000)))
 
-		// withdraw all 1000000 abera from contractAddr to account 0
+		// withdraw all 1000000 afury from contractAddr to account 0
 		_, err = contract.WithdrawDonations(tf.GenerateTransactOpts("alice"))
 		Expect(err).ToNot(HaveOccurred())
 
@@ -182,7 +182,7 @@ var _ = Describe("Bank", func() {
 		err = tf.Network.WaitForNextBlock()
 		Expect(err).ToNot(HaveOccurred())
 
-		// contractAddr should have 0 abera
+		// contractAddr should have 0 afury
 		balance, err = bankPrecompile.GetBalance(nil, contractAddr, denom)
 		Expect(err).ShouldNot(HaveOccurred())
 		Expect(balance.Cmp(big.NewInt(0))).To(Equal(0))

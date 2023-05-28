@@ -488,7 +488,7 @@ var _ = Describe("State Plugin", func() {
 type mockConfigurationPlugin struct{}
 
 func (mcp *mockConfigurationPlugin) GetEvmDenom() string {
-	return "abera"
+	return "afury"
 }
 
 type mockPLF struct{}

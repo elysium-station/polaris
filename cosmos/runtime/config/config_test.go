@@ -94,7 +94,7 @@ var _ = Describe("RegisterDenoms", func() {
 
 		// Check if the base denomination was registered correctly
 		baseDenom, err := sdk.GetBaseDenom()
-		Expect(baseDenom).To(Equal("abera"))
+		Expect(baseDenom).To(Equal("afury"))
 		Expect(err).ToNot(HaveOccurred())
 
 		denomUnit, found := sdk.GetDenomUnit(baseDenom)

@@ -29,7 +29,7 @@ import (
 
 const (
 	// DefaultEvmDenom is the default EVM denom.
-	DefaultEvmDenom = "abera"
+	DefaultEvmDenom = "afury"
 )
 
 var (

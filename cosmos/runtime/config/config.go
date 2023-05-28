@@ -32,7 +32,7 @@ import (
 
 const (
 	// Bech32Prefix defines the Bech32 prefix used for EthAccounts.
-	Bech32Prefix = "polar"
+	Bech32Prefix = "black"
 	// Bech32PrefixAccAddr defines the Bech32 prefix of an account's address.
 	Bech32PrefixAccAddr = Bech32Prefix
 	// Bech32PrefixAccPub defines the Bech32 prefix of an account's public key.
@@ -76,11 +76,11 @@ func SetBip44CoinType(config *sdk.Config) {
 
 // RegisterDenoms registers the base and display denominations to the SDK.
 func RegisterDenoms() {
-	if err := sdk.RegisterDenom("bera", sdkmath.LegacyOneDec()); err != nil {
+	if err := sdk.RegisterDenom("fury", sdkmath.LegacyOneDec()); err != nil {
 		panic(err)
 	}
 
-	if err := sdk.RegisterDenom("abera", sdkmath.LegacyNewDecWithPrec(1, accounts.EtherDecimals)); err != nil {
+	if err := sdk.RegisterDenom("afury", sdkmath.LegacyNewDecWithPrec(1, accounts.EtherDecimals)); err != nil {
 		panic(err)
 	}
 }

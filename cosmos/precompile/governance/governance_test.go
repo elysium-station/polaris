@@ -91,7 +91,7 @@ var _ = Describe("Governance Precompile", func() {
 			msg = banktypes.MsgSend{
 				FromAddress: caller.String(),
 				ToAddress:   testutil.Bob.String(),
-				Amount:      sdk.NewCoins(sdk.NewInt64Coin("abera", 100)),
+				Amount:      sdk.NewCoins(sdk.NewInt64Coin("afury", 100)),
 			}
 		})
 
@@ -145,11 +145,11 @@ var _ = Describe("Governance Precompile", func() {
 			Expect(res).To(BeNil())
 		})
 		It("should succeed", func() {
-			initDeposit := sdk.NewCoins(sdk.NewInt64Coin("abera", 100))
+			initDeposit := sdk.NewCoins(sdk.NewInt64Coin("afury", 100))
 			govAcct := gk.GetGovernanceAccount(ctx).GetAddress()
 			err := cosmlib.MintCoinsToAddress(
 				ctx, bk, governancetypes.ModuleName,
-				cosmlib.AccAddressToEthAddress(govAcct), "abera", big.NewInt(100),
+				cosmlib.AccAddressToEthAddress(govAcct), "afury", big.NewInt(100),
 			)
 			Expect(err).ToNot(HaveOccurred())
 			message := &banktypes.MsgSend{

@@ -122,8 +122,8 @@ func DefaultConfig(keysMap map[string]*ethsecp256k1.PrivKey) network.Config {
 		TimeoutCommit:   time.Second,
 		ChainID:         "polaris-2061",
 		NumValidators:   1,
-		BondDenom:       "abera",
-		MinGasPrices:    fmt.Sprintf("0.00006%s", "abera"),
+		BondDenom:       "afury",
+		MinGasPrices:    fmt.Sprintf("0.00006%s", "afury"),
 		AccountTokens:   sdk.TokensFromConsensusPower(thousand, sdk.DefaultPowerReduction),
 		StakingTokens:   sdk.TokensFromConsensusPower(fivehundred, sdk.DefaultPowerReduction),
 		BondedTokens:    sdk.TokensFromConsensusPower(onehundred, sdk.DefaultPowerReduction),
@@ -166,7 +166,7 @@ func BuildGenesisState(keysMap map[string]*ethsecp256k1.PrivKey) map[string]json
 	bankState.DenomMetadata = getTestMetadata()
 	bankState.SendEnabled = []banktypes.SendEnabled{
 		{
-			Denom:   "abera",
+			Denom:   "afury",
 			Enabled: true,
 		},
 		{
@@ -185,7 +185,7 @@ func BuildGenesisState(keysMap map[string]*ethsecp256k1.PrivKey) map[string]json
 	// Staking module
 	var stakingState stakingtypes.GenesisState
 	encoding.Codec.MustUnmarshalJSON(genState[stakingtypes.ModuleName], &stakingState)
-	stakingState.Params.BondDenom = "abera"
+	stakingState.Params.BondDenom = "afury"
 	genState[stakingtypes.ModuleName] = encoding.Codec.MustMarshalJSON(&stakingState)
 
 	// Distribution Module
@@ -203,16 +203,16 @@ func BuildGenesisState(keysMap map[string]*ethsecp256k1.PrivKey) map[string]json
 func getTestMetadata() []banktypes.Metadata {
 	return []banktypes.Metadata{
 		{
-			Name:        "Berachain bera",
-			Symbol:      "BERA",
-			Description: "The Bera.",
+			Name:        "Gridiron fury",
+			Symbol:      "FURY",
+			Description: "The Fury.",
 			DenomUnits: []*banktypes.DenomUnit{
-				{Denom: "bera", Exponent: uint32(0), Aliases: []string{"bera"}},
-				{Denom: "nbera", Exponent: uint32(9), Aliases: []string{"nanobera"}},
-				{Denom: "abera", Exponent: uint32(18), Aliases: []string{"attobera"}},
+				{Denom: "fury", Exponent: uint32(0), Aliases: []string{"fury"}},
+				{Denom: "nfury", Exponent: uint32(9), Aliases: []string{"nanofury"}},
+				{Denom: "afury", Exponent: uint32(18), Aliases: []string{"attofury"}},
 			},
-			Base:    "abera",
-			Display: "bera",
+			Base:    "afury",
+			Display: "fury",
 		},
 		{
 			Name:        "Token",
@@ -255,7 +255,7 @@ func getCoinsForAccount(name string) sdk.Coins {
 	switch name {
 	case "alice":
 		return sdk.NewCoins(
-			sdk.NewCoin("abera", sdkmath.NewInt(examoney)),
+			sdk.NewCoin("afury", sdkmath.NewInt(examoney)),
 			sdk.NewCoin("bATOM", sdkmath.NewInt(examoney)),
 			sdk.NewCoin("bAKT", sdkmath.NewInt(12345)), //nolint:gomnd // its okay.
 			sdk.NewCoin("stake", sdkmath.NewInt(examoney)),
@@ -266,13 +266,13 @@ func getCoinsForAccount(name string) sdk.Coins {
 		)
 	case "bob":
 		return sdk.NewCoins(
-			sdk.NewCoin("abera", sdkmath.NewInt(onehundred)),
+			sdk.NewCoin("afury", sdkmath.NewInt(onehundred)),
 			sdk.NewCoin("atoken", sdkmath.NewInt(onehundred)),
 			sdk.NewCoin("stake", sdkmath.NewInt(examoney)),
 		)
 	case "charlie":
-		return sdk.NewCoins(sdk.NewCoin("abera", sdkmath.NewInt(examoney)))
+		return sdk.NewCoins(sdk.NewCoin("afury", sdkmath.NewInt(examoney)))
 	default:
-		return sdk.NewCoins(sdk.NewCoin("abera", sdkmath.NewInt(examoney)))
+		return sdk.NewCoins(sdk.NewCoin("afury", sdkmath.NewInt(examoney)))
 	}
 }

@@ -84,11 +84,11 @@ var _ = Describe("ERC20", func() {
 			})
 
 			It("should handle non-empty inputs", func() {
-				token, err := erc20Precompile.Erc20AddressForCoinDenom(nil, "abera")
+				token, err := erc20Precompile.Erc20AddressForCoinDenom(nil, "afury")
 				Expect(err).ToNot(HaveOccurred())
 				Expect(token).To(Equal(common.Address{}))
 
-				tokenAddr := common.BytesToAddress([]byte("abera"))
+				tokenAddr := common.BytesToAddress([]byte("afury"))
 				tokenBech32 := cosmlib.AddressToAccAddress(tokenAddr).String()
 
 				denom, err := erc20Precompile.CoinDenomForERC20Address(nil, tokenAddr)

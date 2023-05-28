@@ -110,7 +110,7 @@ func Setup(ctrl *gomock.Controller, caller sdk.AccAddress) (sdk.Context, bankkee
 	// Fund the caller with some coins.
 	err = lib.MintCoinsToAddress(
 		//nolint:gomnd // magic number is fine here.
-		ctx, bk, governancetypes.ModuleName, lib.AccAddressToEthAddress(caller), "abera", big.NewInt(100000000),
+		ctx, bk, governancetypes.ModuleName, lib.AccAddressToEthAddress(caller), "afury", big.NewInt(100000000),
 	)
 	if err != nil {
 		panic(err)

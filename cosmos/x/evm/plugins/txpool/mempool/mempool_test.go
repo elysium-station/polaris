@@ -129,7 +129,7 @@ var _ = Describe("EthTxPool", func() {
 type mockConfigurationPlugin struct{}
 
 func (mcp *mockConfigurationPlugin) GetEvmDenom() string {
-	return "abera"
+	return "afury"
 }
 
 type mockPLF struct{}
